@@ -65,6 +65,20 @@ const config: Config = {
         'fade-in': 'fadeIn 0.3s ease-in-out',
         'slide-up': 'slideUp 0.2s ease-out',
         'blink': 'blink 1s step-end infinite',
+        'thread-spawn': 'threadSpawn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards',
+        'task-slide': 'taskSlide 0.5s ease-out forwards',
+        'lock-pulse': 'lockPulse 0.8s ease-in-out',
+        'lock-acquire': 'lockAcquire 0.5s ease-out forwards',
+        'lock-release': 'lockRelease 0.5s ease-out forwards',
+        'flow-arrow': 'flowArrow 1.5s linear infinite',
+        'gauge-grow': 'gaugeGrow 1.5s ease-out forwards',
+        'table-row-in': 'tableRowIn 0.3s ease-out forwards',
+        'overlay-in': 'overlayFadeIn 0.4s ease-out forwards',
+        'float': 'float 3s ease-in-out infinite',
+        'progress-fill': 'progressFill 2s ease-in-out forwards',
+        'glow-ring': 'glowRing 2s ease-in-out infinite',
+        'task-complete': 'taskComplete 0.6s ease-out forwards',
+        'dash-flow': 'dashFlow 1s linear infinite',
       },
       keyframes: {
         fadeIn: {
@@ -78,6 +92,66 @@ const config: Config = {
         blink: {
           '0%, 100%': { opacity: '1' },
           '50%': { opacity: '0' },
+        },
+        threadSpawn: {
+          '0%': { opacity: '0', transform: 'scale(0.3) translateY(20px)' },
+          '60%': { opacity: '1', transform: 'scale(1.1) translateY(-4px)' },
+          '100%': { opacity: '1', transform: 'scale(1) translateY(0)' },
+        },
+        taskSlide: {
+          '0%': { opacity: '0', transform: 'translateX(-60px)' },
+          '100%': { opacity: '1', transform: 'translateX(0)' },
+        },
+        lockPulse: {
+          '0%, 100%': { transform: 'scale(1)' },
+          '50%': { transform: 'scale(1.2)' },
+        },
+        lockAcquire: {
+          '0%': { transform: 'scale(0.8)', opacity: '0.5' },
+          '50%': { transform: 'scale(1.15)' },
+          '100%': { transform: 'scale(1)', opacity: '1' },
+        },
+        lockRelease: {
+          '0%': { transform: 'scale(1)', opacity: '1' },
+          '50%': { transform: 'scale(1.15)', opacity: '0.8' },
+          '100%': { transform: 'scale(0.9)', opacity: '0.6' },
+        },
+        flowArrow: {
+          '0%': { strokeDashoffset: '20' },
+          '100%': { strokeDashoffset: '0' },
+        },
+        gaugeGrow: {
+          '0%': { strokeDasharray: '0 251' },
+          '100%': { strokeDasharray: 'var(--gauge-value) 251' },
+        },
+        tableRowIn: {
+          '0%': { opacity: '0', transform: 'translateX(-12px)' },
+          '100%': { opacity: '1', transform: 'translateX(0)' },
+        },
+        overlayFadeIn: {
+          '0%': { opacity: '0', backdropFilter: 'blur(0px)' },
+          '100%': { opacity: '1', backdropFilter: 'blur(12px)' },
+        },
+        float: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-6px)' },
+        },
+        progressFill: {
+          '0%': { width: '0%' },
+          '100%': { width: '100%' },
+        },
+        glowRing: {
+          '0%, 100%': { boxShadow: '0 0 0 0 rgba(9, 105, 218, 0.3)' },
+          '50%': { boxShadow: '0 0 0 8px rgba(9, 105, 218, 0)' },
+        },
+        taskComplete: {
+          '0%': { transform: 'scale(1)', opacity: '1' },
+          '50%': { transform: 'scale(0.8)', opacity: '0.5' },
+          '100%': { transform: 'scale(1)', opacity: '1' },
+        },
+        dashFlow: {
+          '0%': { strokeDashoffset: '10' },
+          '100%': { strokeDashoffset: '0' },
         },
       },
     },
