@@ -9,6 +9,7 @@ import MetricsDashboard from '@/components/MetricsDashboard';
 import LogConsole from '@/components/LogConsole';
 import SchedulerPanel from '@/components/SchedulerPanel';
 import SyncVisualizer from '@/components/SyncVisualizer';
+import ThreadPoolAnimation from '@/components/ThreadPoolAnimation';
 
 // ─── Tab system for the right panel ─────────────────────────────────────────
 type RightTab = 'scheduler' | 'sync';
@@ -19,6 +20,7 @@ export default function ThreadSpherePage() {
 
   const [rightTab, setRightTab] = useState<RightTab>('scheduler');
   const [showInfo, setShowInfo] = useState(false);
+  const [showSyncAnimation, setShowSyncAnimation] = useState(false);
 
   const activeCount = state.threads.filter((t) => t.status === 'running').length;
   const waitingCount = state.threads.filter((t) => t.status === 'waiting').length;
@@ -150,6 +152,7 @@ export default function ThreadSpherePage() {
               onThreadCountChange={setThreadCount}
               onAlgorithmChange={setAlgorithm}
               onSyncTypeChange={setSyncType}
+              onSyncAnimate={() => setShowSyncAnimation(true)}
             />
           </div>
         </aside>
@@ -260,6 +263,15 @@ export default function ThreadSpherePage() {
           {state.metrics.cpuUsage.toFixed(1)}% CPU
         </span>
       </footer>
+
+      {/* Thread Pool Sync Animation Overlay */}
+      {showSyncAnimation && (
+        <ThreadPoolAnimation
+          threadCount={state.threadCount}
+          syncType={state.syncType}
+          onClose={() => setShowSyncAnimation(false)}
+        />
+      )}
     </div>
   );
 }

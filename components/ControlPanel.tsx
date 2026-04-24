@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Play, Pause, RotateCcw, Settings } from 'lucide-react';
+import { Play, Pause, RotateCcw, Settings, Zap } from 'lucide-react';
 import type { SimulationState, SchedulerAlgorithm, SyncType } from '@/types';
 
 interface ControlPanelProps {
@@ -12,6 +12,7 @@ interface ControlPanelProps {
   onThreadCountChange: (n: number) => void;
   onAlgorithmChange: (a: SchedulerAlgorithm) => void;
   onSyncTypeChange: (s: SyncType) => void;
+  onSyncAnimate: () => void;
 }
 
 export default function ControlPanel({
@@ -22,6 +23,7 @@ export default function ControlPanel({
   onThreadCountChange,
   onAlgorithmChange,
   onSyncTypeChange,
+  onSyncAnimate,
 }: ControlPanelProps) {
   const { isRunning, isPaused, schedulerAlgorithm, syncType, threadCount } = state;
 
@@ -76,6 +78,18 @@ export default function ControlPanel({
               Reset
             </button>
           </div>
+
+          {/* Synchronize Thread Pool Button */}
+          <button
+            id="btn-sync-animate"
+            onClick={onSyncAnimate}
+            className="w-full flex items-center justify-center gap-2 px-3 py-2 text-xs font-mono rounded-md border transition-all
+                       bg-done-subtle border-done-muted text-done-fg
+                       hover:bg-done-emphasis hover:text-white hover:border-done-emphasis active:scale-95"
+          >
+            <Zap size={13} fill="currentColor" />
+            Synchronize using Thread Pool
+          </button>
         </div>
 
         {/* ── Thread Count Slider ───────────────────────────── */}

@@ -29,7 +29,7 @@ export default function LogConsole({ logs }: LogConsoleProps) {
   useEffect(() => {
     const container = containerRef.current;
     if (!container || userScrolledRef.current) return;
-    bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
+    container.scrollTo({ top: container.scrollHeight, behavior: 'smooth' });
   }, [logs]);
 
   const handleScroll = () => {
