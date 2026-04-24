@@ -9,7 +9,7 @@ import MetricsDashboard from '@/components/MetricsDashboard';
 import LogConsole from '@/components/LogConsole';
 import SchedulerPanel from '@/components/SchedulerPanel';
 import SyncVisualizer from '@/components/SyncVisualizer';
-import ThreadPoolAnimation from '@/components/ThreadPoolAnimation';
+import DynamicSyncAnimation from '@/components/DynamicSyncAnimation';
 
 // ─── Tab system for the right panel ─────────────────────────────────────────
 type RightTab = 'scheduler' | 'sync';
@@ -266,7 +266,7 @@ export default function ThreadSpherePage() {
 
       {/* Thread Pool Sync Animation Overlay */}
       {showSyncAnimation && (
-        <ThreadPoolAnimation
+        <DynamicSyncAnimation
           threadCount={state.threadCount}
           syncType={state.syncType}
           onClose={() => setShowSyncAnimation(false)}

@@ -88,8 +88,12 @@ export default function ControlPanel({
                        hover:bg-done-emphasis hover:text-white hover:border-done-emphasis active:scale-95"
           >
             <Zap size={13} fill="currentColor" />
-            Synchronize using Thread Pool
+            Visualize Synchronization
           </button>
+
+          <p className="text-[9px] font-mono text-fg-subtle text-center">
+            Dynamic thread control during visualization. Learn how threads synchronize and coordinate through {syncType === 'mutex' ? 'mutual exclusion' : 'counting semaphores'}.
+          </p>
         </div>
 
         {/* ── Thread Count Slider ───────────────────────────── */}
